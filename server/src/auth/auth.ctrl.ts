@@ -21,8 +21,8 @@ export class AuthCtrl {
       const { email, password } = parseData
       const data = await authService.login(email, password)
       res
-        .cookie('accessToken', data.accessToken, { httpOnly: true, secure: true, sameSite: 'strict' })
-        .cookie('refreshToken', data.refreshToken, { httpOnly: true, secure: true, sameSite: 'strict' })
+        .cookie('accessToken', data.accessToken, { httpOnly: true, secure: true, sameSite: 'none' })
+        .cookie('refreshToken', data.refreshToken, { httpOnly: true, secure: true, sameSite: 'none' })
       new ResponseHandler(res).sendResponse(HTTP_STATUS.OK, 'Login successful', null)
     } catch (error) {
       if (error instanceof z.ZodError) {
