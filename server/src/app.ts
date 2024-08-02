@@ -39,20 +39,16 @@ class Server {
 
   routes (): void {
     this.app.use('/api/v1/auth', authRoutes)
-<<<<<<< Updated upstream
-    this.app.use('/api/v1', verifyToken, router)
-=======
     this.app.use('/api/v1'
       , verifyToken
       , router)
 
->>>>>>> Stashed changes
     this.app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
   }
 
   errorHandling (): void {
     this.app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-      const statusCode = typeof err.statusCode === 'number' ? err.statusCode : 500
+      const statusCode = typeof err.statusode === 'number' ? err.statusCode : 500
       const message = typeof err.message === 'string' ? err.message : 'Internal Server Error'
       console.log(err)
       res.status(statusCode).json({ message })
